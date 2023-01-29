@@ -69,7 +69,7 @@ export class BoardView extends Component {
 	state = {
 		form: {},
 		messages: [],
-		endpoint: window.location.hostname+ ':5000',
+		endpoint: 'https://whiteboard-cwbp.onrender.com/',
 		showChat: true,
 		unread: 0,
 		connectionError: false,

@@ -6,7 +6,7 @@ export class BoardViewCanvas extends Component {
     constructor() {
         super();
         this.state = {
-            endpoint: 'http://localhost:5000/'
+            endpoint: 'https://whiteboard-cwbp.onrender.com/'
         };
     }
     
