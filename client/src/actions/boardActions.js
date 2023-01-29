@@ -63,7 +63,7 @@ export const addBoard = board => async (dispatch, getState) => {
             body: JSON.stringify(board)
         });
         const data = await res.json();
-        window.location.href += 'board/' + data.board._id;
+        'https://whiteboard-cwbp.onrender.com/board/' + data.board._id;
     }
 };
 
