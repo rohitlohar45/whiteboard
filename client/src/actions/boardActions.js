@@ -1,8 +1,6 @@
 import { GET_ONE_BOARD_ERROR, GET_ONE_BOARD, ONE_BOARD_LOADING, GET_BOARDS, ADD_BOARD, BOARDS_LOADING, CLEAR_ERRORS, CLEAR_BOARDS } from "./types";
 
 export const getBoards = () => async (dispatch, getState) => {
-    const URL = 'https://whiteboard-cwbp.onrender.com/';
-    
     dispatch(setBoardsLoading());
 
     const res = await fetch('/api/user/boards', {
@@ -65,7 +63,7 @@ export const addBoard = board => async (dispatch, getState) => {
             body: JSON.stringify(board)
         });
         const data = await res.json();
-        URL += 'board/' + data.board._id;
+        window.location.href += 'board/' + data.board._id;
     }
 };
 

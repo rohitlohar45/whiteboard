@@ -69,7 +69,7 @@ export class BoardView extends Component {
 	state = {
 		form: {},
 		messages: [],
-		endpoint: 'https://whiteboard-cwbp.onrender.com/',
+		endpoint: window.location.hostname+ ':5000',
 		showChat: true,
 		unread: 0,
 		connectionError: false,
@@ -254,9 +254,15 @@ export class BoardView extends Component {
 		'mousemove': ({ that, fill, setLayer, clear, mouse, pathBuffer, noStroke, circle, ctx, width, height }) => {
 			if (mouse.isDown()) {
 				if (this.state.tool === 'pencil') {
+					// setLayer(1);
+					// clear();
+					// fill(this.color);
 					const [x, y] = calcBoardPosition(Vector.sub(mouse.position, Vector.mult(this.offset, this.scale)), width / 2, height / 2, this.scale);
 					pathBuffer[socket.id].add([x, y]);
 					socket.emit('appendBuffer', x, y);
+					// pathBuffer[socket.id].render(that());
+					// noStroke();
+					// circle(mouse.position.x, mouse.position.y, ctx().lineWidth / 2);
 				} else {
 					this.offset.add(Vector.sub(mouse.position, mouse.lastPosition).div(this.scale));
 					this.reRender = true;
@@ -292,7 +298,7 @@ export class BoardView extends Component {
 		if (isLoading)
 			return (
 				<div className='flexbox cu uc fullvh'>
-					<Loading msg='Fetching WhiteBoard'></Loading>
+					<Loading msg='Fetching DrawBoard'></Loading>
 				</div>
 			)
 		if (!board || (board && !board.isAuthenticated))
